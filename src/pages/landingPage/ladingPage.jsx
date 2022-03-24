@@ -27,7 +27,7 @@ const LandingPage = () => {
 
   return (
     <div>
-      <h1>Lading</h1>
+      <h1></h1>
     </div>
   );
 };
