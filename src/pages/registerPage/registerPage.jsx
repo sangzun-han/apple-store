@@ -1,7 +1,7 @@
 import clayful from "clayful/client-js";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./registerPage.module.css";
+import "../../css/registerPage.css";
 const RegisterPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -34,12 +34,12 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className={styles.auth_wrapper}>
+    <div className="auth_wrapper">
       <form onSubmit={handleSubmit}>
-        <div className={styles.logo}>
+        <div className="logo">
           <img src="/images/logo.png" alt="logo" />
         </div>
-        <div className={styles.register_input}>
+        <div className="register_input">
           <input
             type="email"
             placeholder="이메일"

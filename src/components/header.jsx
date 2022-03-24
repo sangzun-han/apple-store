@@ -3,7 +3,6 @@ import "../css/header.css";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { AuthContext } from "../context/authContext";
-
 const Header = () => {
   const { isAuthenticated, signOut, isAuth } = useContext(AuthContext);
 
@@ -33,14 +32,14 @@ const Header = () => {
                 <>
                   <Nav.Link onClick={signOut}>로그아웃</Nav.Link>
                   <Nav.Link href="/user/cart">
-                    <img src="/images/icons//cart-sm.png" alt="cart" />
+                    <img src="/images/icons/cart-sm.png" alt="cart" />
                   </Nav.Link>
                 </>
               ) : (
                 <>
                   <Nav.Link href="/login">로그인</Nav.Link>
                   <Nav.Link href="/login">
-                    <img src="/images/icons//cart-sm.png" alt="cart" />
+                    <img src="/images/icons/cart-sm.png" alt="cart" />
                   </Nav.Link>
                 </>
               )}

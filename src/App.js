@@ -2,7 +2,7 @@ import "./app.css";
 import { Route, Routes } from "react-router-dom";
 import AuthContextProvider from "./context/authContext";
 
-import LandingPage from "./pages/landingPage/ladingPage";
+import LandingPage from "./pages/landingPage/landingPage";
 import RegisterPage from "./pages/registerPage/registerPage";
 import LoginPage from "./pages/loginPage/loginPage";
 import Header from "./components/header";
