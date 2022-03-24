@@ -1,11 +1,14 @@
-import clayful from "clayful/client-js";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import styles from "./loginPage.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./registerPage.module.css";
-const RegisterPage = () => {
+import clayful from "clayful/client-js";
+import { AuthContext } from "../../context/authContext";
+
+const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isAuthenticated } = useContext(AuthContext);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -17,7 +20,6 @@ const RegisterPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const customer = clayful.Customer;
 
     const payload = {
@@ -25,14 +27,18 @@ const RegisterPage = () => {
       password: password,
     };
 
-    customer.createMe(payload, (err) => {
+    customer.authenticate(payload, (err, result) => {
       if (err) {
         console.log(err.code);
         return;
-      } else navigate("/login");
+      } else {
+        localStorage.setItem("customerUid", result.data.customer);
+        localStorage.setItem("accessToken", result.data.token);
+        navigate("/");
+        isAuthenticated();
+      }
     });
   };
-
   return (
     <div className={styles.auth_wrapper}>
       <form onSubmit={handleSubmit}>
@@ -54,20 +60,16 @@ const RegisterPage = () => {
             defaultValue={password}
             onChange={handlePasswordChange}
           />
-          {/* <input
-            type="password"
-            placeholder="비밀번호 확인"
-            name="password"
-            defaultValue=""
-          />
-          <input type="email" placeholder="이름" name="email" defaultValue="" /> */}
-
-          <button type="submit">회원가입</button>
-          <Link to="/login">이미 Apple ID가 있다면?</Link>
+          <p>
+            Apple ID는 iTunes, App store, iCloud에 로그인할 때 사용하는 이메일
+            주소입니다.
+          </p>
+          <button type="submit">로그인</button>
+          <Link to="/register">Apple ID가 없다면?</Link>
         </div>
       </form>
     </div>
   );
 };
 
-export default RegisterPage;
+export default LoginPage;
