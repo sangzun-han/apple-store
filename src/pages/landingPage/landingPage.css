@@ -13,10 +13,10 @@ a {
 
 /* welcom */
 .welcome {
-  margin-top: 72px;
+  margin-top: 70px;
   width: 100%;
   height: 500px;
-  background-image: url("../images/home/landingPage.jpeg");
+  background-image: url("../../images/home/landingPage.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -114,7 +114,7 @@ a {
 
 /* second section */
 .second-hightlight-wrapper .left-side-wrapper .left-side-container {
-  background-image: url("../images/home/iphone11-colored.jpg");
+  background-image: url("../../images/home/iphone11-colored.jpg");
   background-color: #000;
   padding-top: 35px;
   margin: 0 0 10px 0;
@@ -122,7 +122,7 @@ a {
 }
 
 .second-hightlight-wrapper .right-side-wrapper .right-side-container {
-  background-image: url("../images/home/apple-blue-logo.jpg");
+  background-image: url("../../images/home/apple-blue-logo.jpg");
   background-color: #165ca9;
   background-position: bottom;
   padding-top: 35px;
@@ -140,7 +140,7 @@ a {
 
 /*fourth Section*/
 .fourth-hightlight-wrapper .left-side-wrapper .left-side-container {
-  background-image: url("../images/home/spyder.jpg");
+  background-image: url("../../images/home/spyder.jpg");
   background-color: #000;
   background-position: bottom;
   padding-top: 35px;
@@ -149,7 +149,7 @@ a {
 }
 
 .fourth-hightlight-wrapper .right-side-wrapper .right-side-container {
-  background-image: url("../images/home/apple-card-monthly.jpg");
+  background-image: url("../../images/home/apple-card-monthly.jpg");
   background-color: #fbfbfd;
   background-position: bottom;
   padding-top: 35px;
@@ -278,7 +278,7 @@ a {
   /* first section */
   .first-hightlight-wrapper {
     min-height: 692px;
-    background-image: url("../images/home/macbookair-new.jpg");
+    background-image: url("../../images/home/macbookair-new.jpg");
   }
   .new-alert {
     color: #bf4801;

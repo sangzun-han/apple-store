@@ -1,0 +1,13 @@
+.new {
+  color: #bf4800;
+  margin-bottom: 0;
+}
+
+.name {
+  margin-bottom: 20px;
+}
+
+.quantity {
+  font-weight: 600;
+  margin-bottom: 5px;
+}

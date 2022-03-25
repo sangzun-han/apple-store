@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import clayful from "clayful/client-js";
 import { AuthContext } from "../../context/authContext";
-import "../../css/loginPage.css";
+import "./loginPage.css";
 
 const LoginPage = () => {
   const navigate = useNavigate();

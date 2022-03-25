@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import clayful from "clayful/client-js";
-import "../../css/landingPage.css";
+import "./landingPage.css";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {

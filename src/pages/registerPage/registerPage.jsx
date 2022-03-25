@@ -1,7 +1,7 @@
 import clayful from "clayful/client-js";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../css/registerPage.css";
+import "./registerPage.css";
 const RegisterPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
