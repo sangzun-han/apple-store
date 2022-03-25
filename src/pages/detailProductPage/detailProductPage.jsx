@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ProductInfo from "./section/productInfo";
 
-const DetailProductPage = () => {
+const DetailProductPage = ({ convertPrice }) => {
   const params = useParams();
   const productId = params.productId;
   const [item, setItem] = useState({});
@@ -33,7 +33,7 @@ const DetailProductPage = () => {
           </div>
         </Col>
         <Col md>
-          <ProductInfo item={item} />
+          <ProductInfo item={item} convertPrice={convertPrice} />
         </Col>
       </Row>
       <div dangerouslySetInnerHTML={{ __html: item.description }}></div>

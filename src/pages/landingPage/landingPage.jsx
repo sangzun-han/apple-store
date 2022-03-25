@@ -3,13 +3,9 @@ import clayful from "clayful/client-js";
 import "./landingPage.css";
 import { Link } from "react-router-dom";
 
-const LandingPage = () => {
+const LandingPage = ({ convertPrice }) => {
   const product = clayful.Product;
   const [items, setItems] = useState([]);
-
-  const convertPrice = (price) => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
 
   useEffect(() => {
     const options = {
@@ -24,7 +20,6 @@ const LandingPage = () => {
         return;
       } else {
         console.log("status : ", response.status);
-        console.log(response.data);
         setItems(response.data);
       }
     });
@@ -72,10 +67,10 @@ const LandingPage = () => {
           <div className="links-wrapper">
             <ul>
               <li>
-                <Link to="/">Learn more</Link>
+                <Link to="#">Learn more</Link>
               </li>
               <li>
-                <Link to="/">Buy</Link>
+                <Link to="#">Buy</Link>
               </li>
             </ul>
           </div>
@@ -98,10 +93,10 @@ const LandingPage = () => {
                 <div className="links-wrapper">
                   <ul>
                     <li>
-                      <Link to="/">Learn more</Link>
+                      <Link to="#">Learn more</Link>
                     </li>
                     <li>
-                      <Link to="/">Apply now</Link>
+                      <Link to="#">Apply now</Link>
                     </li>
                   </ul>
                 </div>
@@ -116,7 +111,7 @@ const LandingPage = () => {
                 <div className="links-wrapper white">
                   <ul>
                     <li>
-                      <Link to="/">Watch the PSA</Link>
+                      <Link to="#">Watch the PSA</Link>
                     </li>
                   </ul>
                 </div>
@@ -142,12 +137,12 @@ const LandingPage = () => {
                 <div className="links-wrapper">
                   <ul>
                     <li>
-                      <Link to="/">
+                      <Link to="#">
                         Play now<sup>2</sup>
                       </Link>
                     </li>
                     <li>
-                      <Link to="/">Learn about Apple Arcade</Link>
+                      <Link to="#">Learn about Apple Arcade</Link>
                     </li>
                   </ul>
                 </div>
@@ -165,10 +160,10 @@ const LandingPage = () => {
                 <div className="links-wrapper">
                   <ul>
                     <li>
-                      <Link to="/">Learn more</Link>
+                      <Link to="#">Learn more</Link>
                     </li>
                     <li>
-                      <Link to="/">Apply now</Link>
+                      <Link to="#">Apply now</Link>
                     </li>
                   </ul>
                 </div>

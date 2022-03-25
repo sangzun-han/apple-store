@@ -1,3 +1,11 @@
+.page_wrapper {
+  padding: 7rem 3rem 3rem 3rem;
+}
+
+.page_wrapper .row {
+  display: flex;
+  align-items: center;
+}
 .page_wrapper .thumbnail {
   width: 100%;
 }

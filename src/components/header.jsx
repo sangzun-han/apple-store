@@ -20,14 +20,14 @@ const Header = () => {
           </Navbar.Brand>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="nav-justified w-100 nav-fill">
-              <Nav.Link href="/">스토어</Nav.Link>
-              <Nav.Link href="/">Mac</Nav.Link>
-              <Nav.Link href="/">iPad</Nav.Link>
-              <Nav.Link href="/">iPhone</Nav.Link>
-              <Nav.Link href="/">Watch</Nav.Link>
-              <Nav.Link href="/">Airpods</Nav.Link>
-              <Nav.Link href="/">액세서리</Nav.Link>
-              <Nav.Link href="/">고객지원</Nav.Link>
+              <Nav.Link href="#">스토어</Nav.Link>
+              <Nav.Link href="#">Mac</Nav.Link>
+              <Nav.Link href="#">iPad</Nav.Link>
+              <Nav.Link href="#">iPhone</Nav.Link>
+              <Nav.Link href="#">Watch</Nav.Link>
+              <Nav.Link href="#">Airpods</Nav.Link>
+              <Nav.Link href="#">액세서리</Nav.Link>
+              <Nav.Link href="#">고객지원</Nav.Link>
               {isAuth ? (
                 <>
                   <Nav.Link onClick={signOut}>로그아웃</Nav.Link>
