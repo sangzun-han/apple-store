@@ -1,7 +1,7 @@
 import React from "react";
 import "./cartItem.css";
 
-const CartItem = ({ item, convertPrice }) => {
+const CartItem = ({ item, index, convertPrice, handleQuantity }) => {
   if (!item.product) return null;
 
   return (
@@ -17,11 +17,21 @@ const CartItem = ({ item, convertPrice }) => {
       </div>
 
       <div className="quantity">
-        <button className="minus_btn" type="button" name="button">
+        <button
+          className="minus_btn"
+          type="button"
+          name="button"
+          onClick={() => handleQuantity("minus", index)}
+        >
           -
         </button>
         <input type="text" readOnly name="name" value={item.quantity.raw} />
-        <button className="plus_btn" type="button" name="button">
+        <button
+          className="plus_btn"
+          type="button"
+          name="button"
+          onClick={() => handleQuantity("plus", index)}
+        >
           +
         </button>
       </div>

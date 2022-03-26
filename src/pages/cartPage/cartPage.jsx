@@ -7,12 +7,56 @@ import CartItem from "./section/cartItem";
 const CartPage = ({ convertPrice }) => {
   const navigate = useNavigate();
   const [carts, setCarts] = useState({});
+  const items = carts.items;
+
+  const handleQuantity = (type, index) => {
+    let newCart = { ...carts };
+    const price =
+      carts.items[index].price.original.raw / carts.items[index].quantity.raw;
+
+    if (type === "plus") {
+      newCart.items[index].price.original.raw += price;
+      newCart.total.amount.raw += price;
+      newCart.items[index].quantity.raw += 1;
+      updateItemData(
+        newCart.items[index]._id,
+        newCart.items[index].quantity.raw
+      );
+      setCarts(newCart);
+    } else {
+      if (newCart.items[index].quantity.raw === 1) return;
+
+      newCart.items[index].price.original.raw -= price;
+      newCart.total.amount.raw -= price;
+      newCart.items[index].quantity.raw -= 1;
+      updateItemData(
+        newCart.items[index]._id,
+        newCart.items[index].quantity.raw
+      );
+      setCarts(newCart);
+    }
+  };
+
+  const updateItemData = (itemId, quantity) => {
+    const cart = clayful.Cart;
+    const payload = {
+      quantity: quantity,
+    };
+    const options = {
+      customer: localStorage.getItem("accessToken"),
+    };
+
+    cart.updateItemForMe(itemId, payload, options, (err, result) => {
+      if (err) {
+        console.log(err.code);
+        return;
+      }
+    });
+  };
 
   useEffect(() => {
     const cart = clayful.Cart;
-
     const payload = {};
-
     const options = {
       customer: localStorage.getItem("accessToken"),
     };
@@ -27,8 +71,6 @@ const CartPage = ({ convertPrice }) => {
     });
   }, []);
 
-  const items = carts.items;
-
   return (
     <div className="page_wrapper">
       <div className="shopping_cart">
@@ -40,7 +82,9 @@ const CartPage = ({ convertPrice }) => {
                 <CartItem
                   key={item._id}
                   item={item}
+                  index={index}
                   convertPrice={convertPrice}
+                  handleQuantity={(type, index) => handleQuantity(type, index)}
                 />
               );
             })
@@ -52,7 +96,7 @@ const CartPage = ({ convertPrice }) => {
         {items && items.length > 0 && (
           <div className="bottom">
             <span className="total_price">
-              금액: ₩ {convertPrice(carts.total?.amount.raw)}
+              금액: ₩ {convertPrice(carts.total.amount.raw)}
             </span>
             <button onClick={() => navigate("/payment")}>결제</button>
           </div>
