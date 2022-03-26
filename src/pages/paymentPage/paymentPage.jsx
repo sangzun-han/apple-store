@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./paymentPage.css";
 import clayful from "clayful/client-js";
+import PostModal from "../../components/postModal";
 
 const PaymentPage = ({ convertPrice }) => {
   const navigate = useNavigate();
@@ -28,6 +29,8 @@ const PaymentPage = ({ convertPrice }) => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [paymentMethod, setPayMethod] = useState("");
+
+  const [show, setShow] = useState(false);
 
   const handleSendChange = (event) => {
     const { name, value } = event.target;
@@ -72,13 +75,12 @@ const PaymentPage = ({ convertPrice }) => {
       let itemVariable = {};
       itemVariable.bundleItems = item.bundleItems;
       itemVariable.product = item.product._id;
-      itemVariable.quantity = item.quantity;
+      itemVariable.quantity = item.quantity.raw;
       itemVariable.shippingMethod = item.shippingMethod._id;
       itemVariable.variant = item.variant._id;
       itemVariable._id = item._id;
       return items.push(itemVariable);
     });
-
     const payload = {
       items: items,
       currency: carts.currency.payment.code,
@@ -86,7 +88,7 @@ const PaymentPage = ({ convertPrice }) => {
       address: {
         shipping: {
           name: {
-            full: recvUserInfo.full,
+            full: recvUserInfo.name,
           },
           mobile: recvUserInfo.phone,
           phone: recvUserInfo.phone,
@@ -100,7 +102,7 @@ const PaymentPage = ({ convertPrice }) => {
 
         billing: {
           name: {
-            full: recvUserInfo.full,
+            full: recvUserInfo.name,
           },
           mobile: recvUserInfo.phone,
           phone: recvUserInfo.phone,
@@ -116,6 +118,7 @@ const PaymentPage = ({ convertPrice }) => {
 
     cart.checkoutForMe("order", payload, options, (err, result) => {
       if (err) {
+        console.log(err);
         console.log(err.code);
         return;
       } else {
@@ -155,6 +158,39 @@ const PaymentPage = ({ convertPrice }) => {
         setPaymentMethods(result.data);
       }
     });
+  };
+
+  const handleModal = () => {
+    setShow(!show);
+  };
+
+  const handlePostCode = (data) => {
+    let fullAddress = data.address;
+    let extraAddress = "";
+
+    if (data.addressType === "R") {
+      if (data.bname !== "") extraAddress += data.bname;
+      if (data.buildingName !== "")
+        extraAddress += extraAddress !== "" ? `(${extraAddress})` : "";
+      fullAddress += extraAddress !== "" ? `(${extraAddress})` : "";
+    }
+
+    handleModal();
+    setAddress((prevState) => ({
+      ...prevState,
+      postCode: data.zonecode,
+      state: data.sido,
+      city: data.sigungu,
+      address: fullAddress,
+    }));
+    console.log(data);
+  };
+
+  const handleDetailAddress = (event) => {
+    setAddress((prevState) => ({
+      ...prevState,
+      detailAddress: event.target.value,
+    }));
   };
 
   useEffect(() => {
@@ -222,9 +258,26 @@ const PaymentPage = ({ convertPrice }) => {
             />
 
             <h5>배송 정보</h5>
-            <input type="text" readOnly placeholder="주소" />
-            <input type="text" name="detail_address" placeholder="상세주소" />
-            <input type="text" readOnly placeholder="우편번호" />
+            <input
+              type="text"
+              readOnly
+              value={address.address}
+              placeholder="주소"
+              onClick={() => setShow(true)}
+            />
+            <input
+              type="text"
+              name="detail_address"
+              value={address.detailAddress}
+              onChange={handleDetailAddress}
+              placeholder="상세주소"
+            />
+            <input
+              type="text"
+              readOnly
+              value={address.postCode}
+              placeholder="우편번호"
+            />
 
             <h5>결제</h5>
             <div className="payment_method">
@@ -247,6 +300,12 @@ const PaymentPage = ({ convertPrice }) => {
                 <p>계좌번호 : 3333-11-241256 카카오뱅크</p>
               )}
             </div>
+
+            <PostModal
+              show={show}
+              handleModal={handleModal}
+              handlePostCode={handlePostCode}
+            />
           </div>
         </section>
       </div>
