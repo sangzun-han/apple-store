@@ -14,10 +14,11 @@ const Header = () => {
     <div className="nav-wrapper fixed-top navbar navbar-toggleable-sm navbar-expand-md">
       <div className="container">
         <Navbar className="w-100" collapseOnSelect expand="lg" variant="dark">
-          <Navbar.Toggle aria-controls="responsive-navar-nav" />
           <Navbar.Brand href="/">
             <img src="/images/icons/logo-sm.png" alt="logo" />
           </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="nav-justified w-100 nav-fill">
               <Nav.Link href="#">스토어</Nav.Link>
