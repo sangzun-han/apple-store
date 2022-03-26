@@ -28,7 +28,6 @@ const RegisterPage = () => {
       email: userInfo.email,
       password: userInfo.password,
       phone: userInfo.phone,
-      password: userInfo.password,
       name: {
         full: userInfo.name,
       },
