@@ -1,0 +1,137 @@
+.payment_wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7rem 3rem 3rem 3rem;
+}
+
+.payment_header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.header_left {
+  width: 50%;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.header_right {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header_right span {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.payment input[type="text"] {
+  width: 100%;
+  height: 3rem;
+  max-width: 400px;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 1.5px;
+  color: #1d1d1f;
+  text-overflow: ellipsis;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+  padding: 0.75rem 0.95rem;
+}
+
+.payment button {
+  padding: 4px 8px;
+  height: 2.3rem;
+  max-width: 400px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background-color: #555;
+  color: #fff;
+  font-size: 14px;
+}
+
+.section {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+}
+
+.section_left {
+  width: 49%;
+}
+
+.section_left .checked {
+  display: flex;
+  align-items: center;
+}
+
+.section_left input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
+
+.section_left label {
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+.section_mid {
+  width: 2%;
+}
+
+.section_right {
+  width: 49%;
+}
+
+.payment_method select {
+  width: 100%;
+  height: 3rem;
+  max-width: 400px;
+  color: #1d1d1f;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  text-overflow: ellipsis;
+  font-size: 17px;
+  letter-spacing: 1.2px;
+  margin-bottom: 0.8rem;
+  padding: 0.75rem 0.95rem;
+}
+
+.payment_method {
+  display: flex;
+  flex-direction: column;
+}
+
+.order_btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    flex-direction: column;
+  }
+
+  .section_left {
+    width: 100%;
+  }
+
+  .section_mid {
+    display: none;
+  }
+  .section_right {
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+}

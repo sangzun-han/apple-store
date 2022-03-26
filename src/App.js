@@ -8,6 +8,7 @@ import RegisterPage from "./pages/registerPage/registerPage";
 import LoginPage from "./pages/loginPage/loginPage";
 import DetailProductPage from "./pages/detailProductPage/detailProductPage";
 import CartPage from "./pages/cartPage/cartPage";
+import PaymentPage from "./pages/paymentPage/paymentPage";
 
 function App() {
   const convertPrice = (price) => {
@@ -27,6 +28,10 @@ function App() {
         <Route
           path="/user/cart/"
           element={<CartPage convertPrice={convertPrice} />}
+        />
+        <Route
+          path="/payment"
+          element={<PaymentPage convertPrice={convertPrice} />}
         />
       </Routes>
     </AuthContextProvider>
