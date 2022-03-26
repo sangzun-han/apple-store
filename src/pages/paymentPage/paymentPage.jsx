@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./paymentPage.css";
 import clayful from "clayful/client-js";
 
 const PaymentPage = ({ convertPrice }) => {
+  const navigate = useNavigate();
   const [carts, setCarts] = useState({});
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [recvUserInfo, setRecvUserInfo] = useState({
@@ -57,6 +59,73 @@ const PaymentPage = ({ convertPrice }) => {
         name: sendUserInfo.name,
       });
     }
+  };
+
+  const handlePayment = () => {
+    const cart = clayful.Cart;
+    const options = {
+      customer: localStorage.getItem("accessToken"),
+    };
+
+    let items = [];
+    carts.items.map((item) => {
+      let itemVariable = {};
+      itemVariable.bundleItems = item.bundleItems;
+      itemVariable.product = item.product._id;
+      itemVariable.quantity = item.quantity;
+      itemVariable.shippingMethod = item.shippingMethod._id;
+      itemVariable.variant = item.variant._id;
+      itemVariable._id = item._id;
+      return items.push(itemVariable);
+    });
+
+    const payload = {
+      items: items,
+      currency: carts.currency.payment.code,
+      paymentMethod: paymentMethod,
+      address: {
+        shipping: {
+          name: {
+            full: recvUserInfo.full,
+          },
+          mobile: recvUserInfo.phone,
+          phone: recvUserInfo.phone,
+          postcode: address.postCode,
+          state: address.state,
+          city: address.city,
+          address1: address.address,
+          address2: address.detailAddress,
+          country: "KR",
+        },
+
+        billing: {
+          name: {
+            full: recvUserInfo.full,
+          },
+          mobile: recvUserInfo.phone,
+          phone: recvUserInfo.phone,
+          postcode: address.postCode,
+          state: address.state,
+          city: address.city,
+          address1: address.address,
+          address2: address.detailAddress,
+          country: "KR",
+        },
+      },
+    };
+
+    cart.checkoutForMe("order", payload, options, (err, result) => {
+      if (err) {
+        console.log(err.code);
+        return;
+      } else {
+        console.log(result.data);
+        cart.emptyForMe(options, (err) => {
+          if (err) console.log(err.code);
+          navigate("/history");
+        });
+      }
+    });
   };
 
   const getCartData = () => {
@@ -171,7 +240,9 @@ const PaymentPage = ({ convertPrice }) => {
                 ))}
               </select>
 
-              <button className="order_btn">주문</button>
+              <button className="order_btn" onClick={handlePayment}>
+                주문
+              </button>
               {paymentMethod === "Deposit" && (
                 <p>계좌번호 : 3333-11-241256 카카오뱅크</p>
               )}
