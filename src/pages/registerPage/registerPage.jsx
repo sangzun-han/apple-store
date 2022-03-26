@@ -4,25 +4,34 @@ import { Link, useNavigate } from "react-router-dom";
 import "./registerPage.css";
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+    rePassword: "",
+    name: "",
+    phone: "",
+  });
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUserInfo((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const customer = clayful.Customer;
-
     const payload = {
-      email: email,
-      password: password,
+      email: userInfo.email,
+      password: userInfo.password,
+      phone: userInfo.phone,
+      password: userInfo.password,
+      name: {
+        full: userInfo.name,
+      },
     };
 
     customer.createMe(payload, (err) => {
@@ -44,23 +53,37 @@ const RegisterPage = () => {
             type="email"
             placeholder="이메일"
             name="email"
-            defaultValue={email}
-            onChange={handleEmailChange}
+            defaultValue={userInfo.email}
+            onChange={handleChange}
           />
           <input
             type="password"
             placeholder="비밀번호"
             name="password"
-            defaultValue={password}
-            onChange={handlePasswordChange}
+            defaultValue={userInfo.password}
+            onChange={handleChange}
           />
-          {/* <input
+          <input
             type="password"
             placeholder="비밀번호 확인"
-            name="password"
-            defaultValue=""
+            name="rePassword"
+            defaultValue={userInfo.rePassword}
+            onChange={handleChange}
           />
-          <input type="email" placeholder="이름" name="email" defaultValue="" /> */}
+          <input
+            type="text"
+            placeholder="이름"
+            name="name"
+            defaultValue={userInfo.name}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="전화번호"
+            name="phone"
+            defaultValue={userInfo.phone}
+            onChange={handleChange}
+          />
 
           <button type="submit">회원가입</button>
           <Link to="/login">이미 Apple ID가 있다면?</Link>
