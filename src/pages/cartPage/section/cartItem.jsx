@@ -1,7 +1,14 @@
 import React from "react";
+import CloseButton from "react-bootstrap/CloseButton";
 import "./cartItem.css";
 
-const CartItem = ({ item, index, convertPrice, handleQuantity }) => {
+const CartItem = ({
+  item,
+  index,
+  convertPrice,
+  handleQuantity,
+  handleItemDelete,
+}) => {
   if (!item.product) return null;
 
   return (
@@ -39,7 +46,9 @@ const CartItem = ({ item, index, convertPrice, handleQuantity }) => {
         ₩ {convertPrice(item.price.original.raw)}
       </div>
       <div className="buttons">
-        <span className="delete_btn">X</span>
+        <CloseButton
+          onClick={() => handleItemDelete(item._id, item.price.original.raw)}
+        />
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 .item {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #e1e8ee;
   padding: 20px 30px;
-  height: 120px;
 }
 
 .item .image {
@@ -16,7 +17,6 @@
 
 .buttons {
   position: relative;
-  padding-top: 30px;
   width: 50px;
   text-align: end;
 }
@@ -70,7 +70,6 @@
 
 .item .total_price {
   width: 110px;
-  padding-top: 27px;
   text-align: center;
   font-size: 16px;
   color: #43483d;

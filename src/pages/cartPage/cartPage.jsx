@@ -46,11 +46,34 @@ const CartPage = ({ convertPrice }) => {
       customer: localStorage.getItem("accessToken"),
     };
 
-    cart.updateItemForMe(itemId, payload, options, (err, result) => {
+    cart.updateItemForMe(itemId, payload, options, (err) => {
       if (err) {
         console.log(err.code);
         return;
       }
+    });
+  };
+
+  const removeItemFromState = (itemId, price) => {
+    let newCart = { ...carts };
+    let filteredItems = newCart.items.filter((item) => item._id !== itemId);
+    newCart.items = filteredItems;
+    newCart.total.amount.raw = newCart.total.amount.raw - price;
+    setCarts(newCart);
+  };
+
+  const handleItemDelete = (itemId, price) => {
+    const cart = clayful.Cart;
+    const options = {
+      customer: localStorage.getItem("accessToken"),
+    };
+
+    cart.deleteItemForMe(itemId, options, (err) => {
+      if (err) {
+        console.log(err.code);
+        return;
+      }
+      removeItemFromState(itemId, price);
     });
   };
 
@@ -85,11 +108,14 @@ const CartPage = ({ convertPrice }) => {
                   index={index}
                   convertPrice={convertPrice}
                   handleQuantity={(type, index) => handleQuantity(type, index)}
+                  handleItemDelete={(itemId, price) =>
+                    handleItemDelete(itemId, price)
+                  }
                 />
               );
             })
           ) : (
-            <p className="">카드에 상품이 하나도 없습니다.</p>
+            <p className="">카트에 상품이 하나도 없습니다.</p>
           )}
         </div>
 
