@@ -24,7 +24,10 @@ function App() {
           path="/product/:productId"
           element={<DetailProductPage convertPrice={convertPrice} />}
         />
-        <Route path="/user/cart/" element={<CartPage />} />
+        <Route
+          path="/user/cart/"
+          element={<CartPage convertPrice={convertPrice} />}
+        />
       </Routes>
     </AuthContextProvider>
   );
