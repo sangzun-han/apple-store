@@ -7,8 +7,7 @@ import clayful from "clayful/client-js";
 import axios from "axios";
 
 clayful.config({
-  client:
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImYwZmRlZTExYjlhODFiZjA3ZGZlZGVhYjAxZjk4NzMwNGIzZDQzNmE0YjM0YjcyYzE1ZmZkZGFlNTMyMmNhMGUiLCJyb2xlIjoiY2xpZW50IiwiaWF0IjoxNjQ3OTE4NDY5LCJzdG9yZSI6IlJYWVdCR1RaWTJQMy5ZVkIzM05NRjc3TEYiLCJzdWIiOiJCNkpOQlVWOERWRUQifQ.YTQeWlMRbcpRZvoJEBvVa0iZNT_he8gL7IA6vM_J-zE",
+  client: process.env.REACT_APP_API_KEY,
 });
 
 clayful.install("request", require("clayful/plugins/request-axios")(axios));
