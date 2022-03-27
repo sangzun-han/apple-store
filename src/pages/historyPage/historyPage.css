@@ -1,0 +1,12 @@
+.history_wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 7rem 3rem 3rem 3rem;
+}
+
+.history_title {
+  width: 50%;
+  font-size: 24;
+  font-weight: 500;
+  margin-bottom: 24px;
+}

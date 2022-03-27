@@ -9,6 +9,7 @@ import LoginPage from "./pages/loginPage/loginPage";
 import DetailProductPage from "./pages/detailProductPage/detailProductPage";
 import CartPage from "./pages/cartPage/cartPage";
 import PaymentPage from "./pages/paymentPage/paymentPage";
+import HistoryPage from "./pages/historyPage/historyPage";
 
 function App() {
   const convertPrice = (price) => {
@@ -33,6 +34,7 @@ function App() {
           path="/payment"
           element={<PaymentPage convertPrice={convertPrice} />}
         />
+        <Route path="/history" element={<HistoryPage />} />
       </Routes>
     </AuthContextProvider>
   );
