@@ -134,23 +134,22 @@ const PaymentPage = ({ convertPrice }) => {
   const handlePostCode = (data) => {
     let fullAddress = data.address;
     let extraAddress = "";
-
     if (data.addressType === "R") {
       if (data.bname !== "") extraAddress += data.bname;
       if (data.buildingName !== "")
         extraAddress += extraAddress !== "" ? `(${extraAddress})` : "";
       fullAddress += extraAddress !== "" ? `(${extraAddress})` : "";
     }
-
     handleModal();
-    setAddress((prevState) => ({
-      ...prevState,
-      postCode: data.zonecode,
-      state: data.sido,
-      city: data.sigungu,
-      address: fullAddress,
-    }));
-    console.log(data);
+    setTimeout(() => {
+      setAddress((prevState) => ({
+        ...prevState,
+        postCode: data.zonecode,
+        state: data.sido,
+        city: data.sigungu,
+        address: fullAddress,
+      }));
+    }, 100);
   };
 
   const handleDetailAddress = (event) => {

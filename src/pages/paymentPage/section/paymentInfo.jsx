@@ -68,14 +68,14 @@ const PaymentInfo = ({
             type="text"
             name="name"
             placeholder="수취자명"
-            defaultValue={recvUserInfo.name}
+            value={recvUserInfo.name}
             onChange={handleRecvChange}
           />
           <input
             type="text"
             name="phone"
             placeholder="수취자 연락처"
-            defaultValue={recvUserInfo.phone}
+            value={recvUserInfo.phone}
             onChange={handleRecvChange}
           />
 
@@ -89,7 +89,7 @@ const PaymentInfo = ({
           />
           <input
             type="text"
-            name="detail_address"
+            name="detailAddress"
             value={address.detailAddress}
             onChange={handleDetailAddress}
             placeholder="상세주소"
