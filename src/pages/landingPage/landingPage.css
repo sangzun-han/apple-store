@@ -60,6 +60,7 @@ a {
 }
 
 .grid-product {
+  width: 300px;
   background: #fbfbfb;
   display: flex;
   flex-direction: column;
@@ -73,7 +74,7 @@ a {
 }
 
 .grid-product img {
-  width: 300px;
+  width: 100%;
 }
 
 .grid-detail {
@@ -248,7 +249,19 @@ a {
 
 /*Media Quer    y*/
 /* Footer */
+
+@media (max-width: 970px) {
+  .grid-product {
+    width: 225px;
+  }
+}
+
 @media (max-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .footer-links-wrapper ul {
     display: none;
   }
@@ -264,6 +277,14 @@ a {
     right: 25px;
   }
 }
+
+@media (max-width: 480px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 @media (min-width: 768px) {
   /*Nav bar*/
   .nav-item {
