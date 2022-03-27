@@ -66,3 +66,28 @@
 .product_info_action:hover {
   border: 1px solid #86868b;
 }
+
+.product_description {
+  max-width: 1920px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.product_description div {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 1280px) {
+  .product_description {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .product_description div {
+    margin-top: 2rem;
+  }
+}

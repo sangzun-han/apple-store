@@ -36,7 +36,10 @@ const DetailProductPage = ({ convertPrice }) => {
           <ProductInfo item={item} convertPrice={convertPrice} />
         </Col>
       </Row>
-      <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
+      <div
+        className="product_description"
+        dangerouslySetInnerHTML={{ __html: item.description }}
+      ></div>
     </div>
   );
 };
