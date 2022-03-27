@@ -6,6 +6,10 @@
   padding: 20px 30px;
 }
 
+.desc_wrapper {
+  display: flex;
+  align-items: center;
+}
 .item .image {
   margin-right: 50px;
 }
@@ -74,4 +78,40 @@
   font-size: 16px;
   color: #43483d;
   font-weight: 300;
+}
+
+@media screen and (max-width: 970px) {
+  .shopping_cart {
+    width: 90%;
+  }
+  .item {
+    position: relative;
+    flex-direction: column;
+  }
+
+  .item .image {
+    margin: 0;
+  }
+
+  .item .image img {
+    width: 110px;
+  }
+  .description {
+    width: initial;
+    margin: 0;
+  }
+
+  .buttons {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+  }
+
+  .quantity {
+    margin: 0;
+  }
+
+  .shopping_cart .bottom button {
+    height: initial;
+  }
 }

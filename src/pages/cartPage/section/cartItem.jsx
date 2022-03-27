@@ -13,14 +13,16 @@ const CartItem = ({
 
   return (
     <div className="item">
-      <div className="image">
-        <img src={item.product.thumbnail.url} alt="item" />
-      </div>
+      <div className="desc_wrapper">
+        <div className="image">
+          <img src={item.product.thumbnail.url} alt="item" />
+        </div>
 
-      <div className="description">
-        <span>{item.product.name}</span>
-        <span>ball High</span>
-        <span>White</span>
+        <div className="description">
+          <span>{item.product.name}</span>
+          <span>ball High</span>
+          <span>White</span>
+        </div>
       </div>
 
       <div className="quantity">
