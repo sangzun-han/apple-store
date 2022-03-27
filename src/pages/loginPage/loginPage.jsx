@@ -32,6 +32,7 @@ const LoginPage = () => {
     customer.authenticate(payload, (err, result) => {
       if (err) {
         console.log(err.code);
+        alert("아이디나 비밀번호를 확인해주세요");
         return;
       } else {
         localStorage.setItem("customerUid", result.data.customer);
