@@ -6,16 +6,18 @@ import "./loginPage.css";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { isAuthenticated } = useContext(AuthContext);
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setLoginInfo((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -23,8 +25,8 @@ const LoginPage = () => {
     const customer = clayful.Customer;
 
     const payload = {
-      email: email,
-      password: password,
+      email: loginInfo.email,
+      password: loginInfo.password,
     };
 
     customer.authenticate(payload, (err, result) => {
@@ -50,15 +52,15 @@ const LoginPage = () => {
             type="email"
             placeholder="이메일"
             name="email"
-            defaultValue={email}
-            onChange={handleEmailChange}
+            defaultValue={loginInfo.email}
+            onChange={handleChange}
           />
           <input
             type="password"
             placeholder="비밀번호"
             name="password"
-            defaultValue={password}
-            onChange={handlePasswordChange}
+            defaultValue={loginInfo.password}
+            onChange={handleChange}
           />
           <p>
             Apple ID는 iTunes, App store, iCloud에 로그인할 때 사용하는 이메일
