@@ -8,7 +8,7 @@
 
 `React`
 
-라이브러리 : `react-router-dom@6`, clayful api`, `react-daum-postcode` 'axios`
+라이브러리 : `react-router-dom@6`, `clayful api`, `react-daum-postcode` `axios`
 
 ## 페이지 기능
 
