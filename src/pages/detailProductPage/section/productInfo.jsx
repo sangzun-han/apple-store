@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/authContext";
 import { Alert } from "react-bootstrap";
 import clayful from "clayful/client-js";
-import "./productInfo.css";
 
 const ProductInfo = ({ item, convertPrice }) => {
   const navigate = useNavigate();
